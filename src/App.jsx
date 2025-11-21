@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
+import HeirInput from "./components/HeirInput";
+import ResultDisplay from "./components/ResultDisplay";
+import "./index.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [results, setResults] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleCalculation = async (inputData) => {
+    setLoading(true);
+    setError(null);
+    setResults(null);
+    try {
+      const data = await calculateShares(inputData);
+      setResults(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="min-h-screen bg-gray-50 p-8">
+      <header className="text-center mb-8">
+        <h1 className="text-4xl font-bold text-green-700">
+          Islamic Inheritance System
+        </h1>
+        <p className="text-xl text-gray-600">Mirath Navigator</p>
+      </header>
 
-export default App
+      <main className="max-w-4xl mx-auto">
+        <HeirInput onSubmit={handleCalculation} loading={loading} />
+
+        {loading && (
+          <p className="text-center text-blue-500 mt-4">
+            Calculating Fiqh Shares...
+          </p>
+        )}
+        {error && (
+          <p className="text-center text-red-600 mt-4">Error: {error}</p>
+        )}
+
+        {results && <ResultDisplay results={results} />}
+      </main>
+    </div>
+  );
+};
+
+export default App;
