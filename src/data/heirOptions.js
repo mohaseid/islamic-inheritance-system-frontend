@@ -1,0 +1,15 @@
+export const HEIR_OPTIONS = [
+  "Spouse (Husband)",
+  "Spouse (Wife)",
+  "Father",
+  "Mother",
+  "Son",
+  "Daughter",
+  "Son’s Son",
+  "Son’s Daughter",
+  "Full Brother",
+  "Full Sister",
+  "Paternal Half-Brother",
+  "Paternal Half-Sister",
+  "Maternal Sibling",
+];
