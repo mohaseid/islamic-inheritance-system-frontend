@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3001/api";
+const BASE_URL = "https://moha-inheritance-api.onrender.com/api";
 
 export const calculateShares = async (inputData) => {
   try {
