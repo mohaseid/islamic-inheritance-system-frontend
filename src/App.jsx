@@ -4,7 +4,7 @@ import ResultDisplay from "./components/ResultDisplay";
 import "./index.css";
 
 const API_URL =
-  "https://moha-inheritance-api.onrender.com/api/calculate-shares";
+  "https://islamic-inheritance-system-backend-1.onrender.com/api/calculate-shares";
 
 const calculateShares = async (inputData) => {
   const response = await fetch(API_URL, {
