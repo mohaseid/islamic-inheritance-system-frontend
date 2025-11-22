@@ -3,7 +3,8 @@ import HeirInput from "./components/HeirInput";
 import ResultDisplay from "./components/ResultDisplay";
 import "./index.css";
 
-const API_URL = "https://moha-inheritance-api.onrender.com/api/calculate";
+const API_URL =
+  "https://moha-inheritance-api.onrender.com/api/v1/calculate-shares.";
 
 const calculateShares = async (inputData) => {
   const response = await fetch(API_URL, {
