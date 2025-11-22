@@ -1,5 +1,5 @@
 const BASE_URL =
-  "https://islamic-inheritance-system-backend-1.onrender.com/api"; // Update to the correct backend URL
+  "https://islamic-inheritance-system-backend-1.onrender.com/api";
 
 export const calculateShares = async (inputData) => {
   try {
